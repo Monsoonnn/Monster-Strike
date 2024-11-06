@@ -8,6 +8,7 @@ TagManager:
   - Arrow
   - Sword
   - Fireball
+  - Wolf
   layers:
   - Default
   - TransparentFX

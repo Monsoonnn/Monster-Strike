@@ -47,3 +47,4 @@ MonoBehaviour:
   groundTile: {fileID: 520752910916132387, guid: fd4197496419205409a1972b0440a55d,
     type: 3}
   nextSpawnPoint: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 28}
