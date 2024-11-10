@@ -1,12 +1,15 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
 
-    // V? sau thay th? b?ng scriptableObj
-    public float arrowSpeed ;
+
+    [SerializeField] private BaseItem arrow;
+
+
+    public float speed;
     public int Damage;
     public float maxDistance;
     public float arrowFrequency;
@@ -19,7 +22,7 @@ public class ArrowController : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.forward * arrowSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
         float distanceTravelled = Vector3.Distance(startPosition, transform.position);
 
@@ -38,5 +41,16 @@ public class ArrowController : MonoBehaviour
 
     public float GetArrowFrequency() { return arrowFrequency; }
 
+    public void InitializeArrowProperties() {
+        if (arrow == null) {
+            return;
+        }
 
+        
+        speed = arrow.speed;
+        Damage = (int)arrow.damage;
+        maxDistance = arrow.maxDistance;
+        arrowFrequency = arrow.frequency;
+
+    }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Sword
   - Fireball
   - Wolf
+  - UIManager
   layers:
   - Default
   - TransparentFX

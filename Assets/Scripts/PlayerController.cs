@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
     // Player status
     private bool alive = true;
-    private int health = 50;
+    public int health = 50;
 
     private float speed = 5;
 
@@ -54,16 +54,19 @@ public class PlayerController : MonoBehaviour {
         dragonController = dragon.gameObject.GetComponent<DragonController>();
         wolfController = wolf.gameObject.GetComponent<WolfController>();
 
+        arrowController.InitializeArrowProperties();
+        swordController.InitializeSwordProperties();
+
 
         currentDragonCount = 0;
         currentSwordCount = 0;
         currentWolfCount = 0;
         dragonCount = dragonController.GetDragonCount();
-        swordCount = swordController.GetSwordCount();
+        swordCount = swordController.swordCount;
         wolfCount = wolfController.GetWolfCount();
 
         float arrowFrequency = 100f / arrowController.GetArrowFrequency();
-        float swordFrequency = 100f / swordController.GetSwordFrequency();
+        float swordFrequency = 100f / swordController.attackFrequency;
 
 
 

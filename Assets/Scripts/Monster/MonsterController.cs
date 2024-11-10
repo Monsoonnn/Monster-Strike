@@ -9,9 +9,14 @@ public class MonsterController : MonoBehaviour {
 
     PlayerController playerController;
 
+    [SerializeField] private MonsterReward_Script monsterReward;
+
+    
+
 
     void Start() {
         playerController = GameObject.FindObjectOfType<PlayerController>();
+   
     }
 
     private void OnCollisionEnter( Collision collision ) {
@@ -39,7 +44,7 @@ public class MonsterController : MonoBehaviour {
  
             if (wolf != null ) {
                 if (wolf.isFinishedAttack) {
-                    Debug.Log("Damage duoc nhan tu: " + collision.gameObject.name);
+                  /*  Debug.Log("Damage duoc nhan tu: " + collision.gameObject.name);*/
                     int wolfDamage = wolf.GetDamage();
                     DamageCalculation(wolfDamage);
                     wolf.isFinishedAttack = false;
@@ -58,7 +63,7 @@ public class MonsterController : MonoBehaviour {
             SwordController sword = other.gameObject.GetComponent<SwordController>();
 
             if (sword != null) {
-                int damage = sword.GetSwordDamage();
+                int damage = sword.damage;
                 DamageCalculation(damage);
                 sword.AttackTarget();
             }
@@ -91,6 +96,9 @@ public class MonsterController : MonoBehaviour {
     }
     void MonsterDie() {
         Debug.Log("Monster died!");
+
+        monsterReward.SpawnRewardChest();
+
         Destroy(gameObject);
     }
 
@@ -115,4 +123,8 @@ public class MonsterController : MonoBehaviour {
 
         
     }
+
+
+
+
 }

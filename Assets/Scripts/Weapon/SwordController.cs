@@ -7,8 +7,9 @@ using UnityEngine.UIElements;
 public class SwordController : MonoBehaviour {
 
 
-    // Về sau thay thế bằng scriptableObj
-    // Cmt bên cạnh là gpt viết hộ
+
+    [SerializeField] private BaseItem prefab;
+
     public float attackDistance;  // Khoảng cách tấn công
     public float moveSpeed;      // Tốc độ di chuyển của kiếm
     public float attackFrequency; // Thời gian respawn của kiếm 
@@ -32,7 +33,7 @@ public class SwordController : MonoBehaviour {
             FindTarget();
             FollowPlayer();
         }
-        
+
         if (isAttacking && targetMonster != null) {
             MoveToTarget(); // Di chuyển tới quái vật
 
@@ -49,13 +50,13 @@ public class SwordController : MonoBehaviour {
         // Lấy tất cả các đối tượng trong vùng bán kính xung quanh kiếm
         Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.forward * attackDistance * 0.5f, attackDistance * 0.5f);
 
-     
+
         foreach (Collider collider in hitColliders) {
             if (collider.CompareTag("Monster")) {
-                targetMonster = collider.transform;  
-                isAttacking = true;                  
- /*               Debug.Log("Found monster: " + collider.gameObject.name);*/
-                break;  
+                targetMonster = collider.transform;
+                isAttacking = true;
+                /*               Debug.Log("Found monster: " + collider.gameObject.name);*/
+                break;
             }
         }
 
@@ -75,7 +76,6 @@ public class SwordController : MonoBehaviour {
 
     }
 
-    
 
     public void AttackTarget() {
         playerController.SetCurrentSwordCount();
@@ -92,20 +92,17 @@ public class SwordController : MonoBehaviour {
 
     }
 
-    public float GetSwordFrequency() {
-        return attackFrequency;
-    }
-
-    public int GetSwordDamage() { 
-        return damage;
-    }
-
-    public int GetSwordCount() {
-        return swordCount;
-    }
 
     public void SetSpawnPoint( Transform point ) {
         spawnPoint = point;
+    }
+
+    public void InitializeSwordProperties() {
+        attackDistance = prefab.attackDistance;
+        moveSpeed = prefab.speed;
+        attackFrequency = prefab.frequency;
+        swordCount = (int)prefab.count;
+        damage = (int)prefab.damage;
     }
 
 }

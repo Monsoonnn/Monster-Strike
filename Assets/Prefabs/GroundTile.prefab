@@ -50,8 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a42c6980bd94946af62889aa543aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundController: {fileID: 2457992579381362990, guid: c970a750ba5fa324481ba1fbcf75b5e8,
-    type: 3}
   monsterObj: {fileID: 5245044892214216813, guid: 06524ba043893634796941b019692f9e,
     type: 3}
   nextSpawnPoint: {fileID: 8042278961831996171}
@@ -102,7 +100,7 @@ Transform:
   m_GameObject: {fileID: 2096622489445360384}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 20}
+  m_LocalPosition: {x: 10, y: -1, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -239,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 3198397070947756993}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 3.2}
+  m_LocalPosition: {x: -10, y: -1, z: 3.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -301,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 8674294382422175487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: -1, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

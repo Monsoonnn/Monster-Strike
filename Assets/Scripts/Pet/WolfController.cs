@@ -12,9 +12,6 @@ public class WolfController : MonoBehaviour {
     public int level;
 
 
-    private Vector3 startPosition;
-    private Vector3 endPosition;
-
     private Transform targetMonster = null;
     private bool isFindAMonster = false;
     public bool isNearMonster { get; private set; }
