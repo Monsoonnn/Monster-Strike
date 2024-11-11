@@ -7,7 +7,7 @@ public class GroundTile : MonoBehaviour {
     private PlayerController playerController;
     [SerializeField] private GameObject monsterObj;
     [SerializeField] private Transform nextSpawnPoint;
-    private float speed = 15f;
+    public float speed;
     private bool monsterSpawned = false;
 
     private Vector3 offset = new Vector3(0, 0, 95);

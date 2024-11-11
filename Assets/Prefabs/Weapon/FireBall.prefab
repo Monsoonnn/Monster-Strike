@@ -151,11 +151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9192c35164b93594c9365b87c174ce7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireball: {fileID: 11400000, guid: d0bbaf2c3c521a1448de7c84634fa4a4, type: 2}
   speed: 3
   damage: 5
+  level: 0
   maxDistance: 20
   attackDistance: 10
   frequency: 20
+  count: 0
 --- !u!135 &-3178572356158949729
 SphereCollider:
   m_ObjectHideFlags: 0

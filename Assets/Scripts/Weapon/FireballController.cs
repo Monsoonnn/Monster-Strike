@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class FireballController : MonoBehaviour
 {
+
+    [SerializeField] private BaseItem fireball;
+
+
     public float speed;
     public int damage;
+    public int level;
     public float maxDistance; // khoang cach xa nhat cau lua di duoc
     public float attackDistance; // khoang cach tim kiem muc tieu
-    public float frequency;
-
+    private float frequency = 20f;
+    public int count;
 
     private Vector3 startPosition;
     private Vector3 endPosition;
@@ -83,4 +88,16 @@ public class FireballController : MonoBehaviour
     }
 
     public float GetFireBallFrequency() { return frequency; }
+
+
+    public void InitializeFireballProperties() {
+        speed = fireball.speed;
+        level = fireball.level;
+        attackDistance = fireball.attackDistance;
+        maxDistance = fireball.maxDistance;
+        damage = (int)fireball.damageByLevel[level];
+        count = (int)fireball.countByLevel[level];
+
+
+    }
 }

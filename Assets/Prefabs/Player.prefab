@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed5fedfa81e29449a4989377bef23ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   rb: {fileID: 1632507773716455162}
   arrow: {fileID: 1546813284045511357, guid: 12dfdb0f9a819d14b804cde7a66d346e, type: 3}
   arrowSpawnPoint: {fileID: 1666840566443027350}
@@ -350,6 +351,7 @@ MonoBehaviour:
   wolfSpawnPoints:
   - {fileID: 6409244643888780390}
   - {fileID: 4088709496987916807}
+  impactBelt: {fileID: 11400000, guid: aaf2fbaf13eee0744acf25af814e9515, type: 2}
   horizontalMultipiler: 2
 --- !u!1 &7638733561747452222
 GameObject:

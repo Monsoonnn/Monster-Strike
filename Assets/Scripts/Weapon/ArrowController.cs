@@ -7,12 +7,17 @@ public class ArrowController : MonoBehaviour
 
 
     [SerializeField] private BaseItem arrow;
-
+    [SerializeField] private BaseItem_critValue critGlasses;
+    [SerializeField] private BaseItem_Support SpeedyCape;
 
     public float speed;
     public int Damage;
     public float maxDistance;
     public float arrowFrequency;
+    public int level;
+    public int levelCritGlasses;
+    public int levelSpeedCape;
+    public int count;
 
     private Vector3 startPosition;
     void Start()
@@ -35,8 +40,21 @@ public class ArrowController : MonoBehaviour
     }
 
 
-    public int GetArrowDamage() { 
-        return Damage;
+    public int GetArrowDamage() {
+
+
+        
+        int totalDamage = critGlasses.totalDamage(Damage, levelCritGlasses);
+        int bonusDamage = (int) SpeedyCape.BonusDamage( speed, levelSpeedCape);
+
+        Debug.Log(bonusDamage + "duoc nhan them");
+
+        // Giảm dmg sau gây dmg lần đầu đi 90%
+        Damage = (int) ((float)Damage * 0.1f);
+
+
+        return totalDamage + bonusDamage;
+
     }
 
     public float GetArrowFrequency() { return arrowFrequency; }
@@ -45,12 +63,17 @@ public class ArrowController : MonoBehaviour
         if (arrow == null) {
             return;
         }
+        levelCritGlasses = critGlasses.level;
+        levelSpeedCape = SpeedyCape.level;
 
-        
         speed = arrow.speed;
-        Damage = (int)arrow.damage;
         maxDistance = arrow.maxDistance;
-        arrowFrequency = arrow.frequency;
+        level = arrow.level;
+        Damage = (int)arrow.damageByLevel[level];
+        arrowFrequency = arrow.frequencyByLevel[level];
+        count = (int)arrow.countByLevel[level];
+
+
 
     }
 }

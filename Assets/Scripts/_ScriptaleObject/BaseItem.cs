@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +8,20 @@ public class BaseItem : ScriptableObject
 {
     public string itemName;
 
+    public Sprite image;
+
     public float speed;
 
-    public float frequency;
-
-    public float damage;
+    public int level;
 
     public float maxDistance;
 
-    public float count;
-
     public float attackDistance;
+
+    public List<float> damageByLevel; // Tính từ lv 0
+
+    public List<float> frequencyByLevel;
+
+    public List<float> countByLevel;
+
 }

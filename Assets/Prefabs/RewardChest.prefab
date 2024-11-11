@@ -67,8 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00b29aae40e9084aab142498a57ceb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIupgradeItem: {fileID: 5687453312042033537, guid: cc03288e930598f48b87c8c09ce5c412,
-    type: 3}
 --- !u!1001 &5829501954162472996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,17 +78,17 @@ PrefabInstance:
     - target: {fileID: 1217567681556088776, guid: d113e2183b5b0a04c902f81a5f0b647e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1217567681556088776, guid: d113e2183b5b0a04c902f81a5f0b647e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1217567681556088776, guid: d113e2183b5b0a04c902f81a5f0b647e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1217567681556088776, guid: d113e2183b5b0a04c902f81a5f0b647e,
         type: 3}

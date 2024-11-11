@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff48683467fb3af49b35ffbb0c2d7c37, type: 3}
-  m_Name: Arrow
+  m_Script: {fileID: 11500000, guid: 5f468805e8de4da46a0ad784a45485b5, type: 3}
+  m_Name: arrow_red
   m_EditorClassIdentifier: 
   itemName: Arrow
-  speed: 5
-  frequency: 40
-  damage: 5
-  maxDistance: 10
-  count: 0
+  image: {fileID: 21300000, guid: 0a3be1129d385d8479a8109f82aa60ef, type: 3}
+  type: damage
+  note: Arrow Damage Bonus
+  minStat: 5
+  maxStat: 15
+  statByLevel: []

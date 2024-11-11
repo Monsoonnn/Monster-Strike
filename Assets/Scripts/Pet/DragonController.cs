@@ -8,7 +8,6 @@ public class DragonController : MonoBehaviour {
 
     public int dragonCount;
 
-
     private PlayerController player;
     [SerializeField] private Transform fireballSpawnPoint;
     [SerializeField] private GameObject fireball;
@@ -23,6 +22,7 @@ public class DragonController : MonoBehaviour {
 
         fireballController = fireball.gameObject.GetComponent<FireballController>();
 
+        fireballController.InitializeFireballProperties();
 
         float fireballFrequency = 100f / fireballController.GetFireBallFrequency();
 
@@ -44,10 +44,18 @@ public class DragonController : MonoBehaviour {
     public void SpawnFireBall() {
 
         isFlaming = true;
+        int maxCount = fireballController.count;
         if (IsAnimationComplete("Flame_Attack")) {
-            Instantiate(fireball, fireballSpawnPoint.position, Quaternion.identity);
+
+            Vector3 offset = new Vector3(Random.Range(0.5f, 1f), 0, Random.Range(0.5f, 1f));
+            for (int i = 0; i < maxCount; i++) {
+                Instantiate(fireball, fireballSpawnPoint.position + offset, Quaternion.identity);
+            }
+
             isFlaming = false;
         }
+
+
     }
 
     public int GetDragonCount() { 

@@ -4,11 +4,16 @@ using TMPro;
 using UnityEngine;
 
 public class WolfController : MonoBehaviour {
+
+
+
+    [SerializeField] private BaseItem wolf;
+
     public int damage;
     public float speed;
 
     public float attackDistance; // khoang cach tim kiem muc tieu
-    public int count; // So luong neu la 4 thi levelUp
+    public int maxCount; // So luong neu la 4 thi levelUp
     public int level;
 
 
@@ -16,12 +21,14 @@ public class WolfController : MonoBehaviour {
     private bool isFindAMonster = false;
     public bool isNearMonster { get; private set; }
     public bool isFinishedAttack { get; set; }
+    public bool hasCollided = false;
 
     private Transform spawnPoint; // vi tri spawn
 
     PlayerController player;
     void Start() {
         player = GameObject.FindObjectOfType<PlayerController>();
+       
     }
 
     void Update() {
@@ -37,7 +44,7 @@ public class WolfController : MonoBehaviour {
         }
         if (isFindAMonster && targetMonster == null) {
             //Kiểm tra nếu quái chết trước khi kiếm đến
-           /* Debug.Log("Monster has been killed");*/
+            /* Debug.Log("Monster has been killed");*/
             BackToPlayer();
         }
 
@@ -78,10 +85,10 @@ public class WolfController : MonoBehaviour {
 
         // Kiểm tra nếu khoảng cách hiện tại lớn hơn khoảng cách mong muốn ( đơn vị trục z)
         if (distanceToTarget > 0.1f) {
-            
+
             Vector3 direction = (targetMonster.position - transform.position).normalized;
 
-          
+
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
 
@@ -118,6 +125,7 @@ public class WolfController : MonoBehaviour {
         targetMonster = null;
         isNearMonster = false;
         isFinishedAttack = false;
+        hasCollided = false;
     }
 
 
@@ -125,7 +133,7 @@ public class WolfController : MonoBehaviour {
         return damage;
     }
 
-    public int GetWolfCount() { return count; }
+    public int GetWolfCount() { return maxCount; }
 
     public void LevelUp() { level++; }
 
@@ -134,5 +142,20 @@ public class WolfController : MonoBehaviour {
         spawnPoint = point;
     }
 
-    public int GetDamage() { return damage;  }
+    public int GetDamage() { return damage; }
+
+
+
+    public void InitializeWolfProperties() {
+        speed = wolf.speed;
+        level = wolf.level;
+        attackDistance = wolf.attackDistance;
+
+      
+            damage = (int)wolf.damageByLevel[level];
+            maxCount = (int)wolf.countByLevel[level];
+       
+
+        
+    }
 }

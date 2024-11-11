@@ -15,6 +15,7 @@ public class SwordController : MonoBehaviour {
     public float attackFrequency; // Thời gian respawn của kiếm 
     public int swordCount;       // Số lượng kiếm có thể spawn
     public int damage;             // Sát thương của kiếm
+    public int level;
     private bool isAttacking = false;   // Biến kiểm soát trạng thái tấn công
 
     private Transform targetMonster = null;
@@ -69,7 +70,9 @@ public class SwordController : MonoBehaviour {
         //Di chuyển kiếm tới quái vật
 
         Vector3 direction = (targetMonster.position - transform.position).normalized;
+
         Quaternion lookRotation = Quaternion.LookRotation(direction);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
 
         transform.Translate(direction * moveSpeed * Time.deltaTime);
@@ -100,9 +103,11 @@ public class SwordController : MonoBehaviour {
     public void InitializeSwordProperties() {
         attackDistance = prefab.attackDistance;
         moveSpeed = prefab.speed;
-        attackFrequency = prefab.frequency;
-        swordCount = (int)prefab.count;
-        damage = (int)prefab.damage;
+        level = prefab.level;
+
+        damage = (int)prefab.damageByLevel[level];
+        attackFrequency = prefab.frequencyByLevel[level];
+        swordCount = (int)prefab.countByLevel[level];
     }
 
 }

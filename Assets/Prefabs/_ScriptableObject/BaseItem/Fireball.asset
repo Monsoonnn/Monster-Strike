@@ -10,12 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff48683467fb3af49b35ffbb0c2d7c37, type: 3}
-  m_Name: Sword
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  itemName: Sword
-  speed: 10
-  frequency: 10
-  damage: 10
-  maxDistance: 0
-  count: 3
-  attackDistance: 10
+  itemName: Fireball
+  speed: 5
+  level: 1
+  maxDistance: 20
+  attackDistance: 20
+  damageByLevel:
+  - 0
+  - 0
+  - 60
+  - 240
+  - 500
+  frequencyByLevel: []
+  countByLevel:
+  - 0
+  - 0
+  - 1
+  - 1
+  - 3

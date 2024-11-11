@@ -96,11 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8edfbc1e3de1eb4c8119eaba81fb3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  wolf: {fileID: 11400000, guid: b4ff671ea35d4d147bd93c5d7e84a7cb, type: 2}
+  damage: 1
   speed: 5
   attackDistance: 15
-  count: 3
-  level: 1
+  maxCount: 1
+  level: 0
+  hasCollided: 0
 --- !u!1 &5672641774804489676
 GameObject:
   m_ObjectHideFlags: 0

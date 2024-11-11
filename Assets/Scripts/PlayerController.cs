@@ -26,6 +26,11 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject wolf;
     [SerializeField] private List<Transform> wolfSpawnPoints;
 
+    [SerializeField] private BaseItem_Support impactBelt;
+
+    private int levelBelt = 0;
+
+
     float horizontalInput;
     public float horizontalMultipiler = 1;
 
@@ -50,26 +55,15 @@ public class PlayerController : MonoBehaviour {
 
     private void Start() {
 
-        arrowController = arrow.gameObject.GetComponent<ArrowController>();
-        swordController = sword.gameObject.GetComponent<SwordController>();
-        dragonController = dragon.gameObject.GetComponent<DragonController>();
-        wolfController = wolf.gameObject.GetComponent<WolfController>();
-
-        arrowController.InitializeArrowProperties(); // Lấy thông tin từ prefab ScriptableObj
-        swordController.InitializeSwordProperties();
+        InitItem(); 
+        // Weapon item
 
 
-        currentDragonCount = 0;
-        currentSwordCount = 0;
-        currentWolfCount = 0;
-        dragonCount = dragonController.GetDragonCount();
-        swordCount = swordController.swordCount;
-        wolfCount = wolfController.GetWolfCount();
+        // Support Item
+        levelBelt = impactBelt.level;
 
         float arrowFrequency = 100f / arrowController.GetArrowFrequency();
         float swordFrequency = 100f / swordController.attackFrequency;
-
-
 
         InvokeRepeating("SpawnArrow", 0f, arrowFrequency);
         InvokeRepeating("SpawnSword", 2f, swordFrequency);
@@ -129,11 +123,16 @@ public class PlayerController : MonoBehaviour {
 
     }
     public void SpawnDragon() {
-        if (currentDragonCount > dragonCount) {
+        if (currentDragonCount >= 3) {
             Debug.Log("Rồng đã đủ lớn để nâng cấp");
             return;
         }
         foreach (Transform spawnPoint in dragonSpawnPoints) {
+            // Kiểm tra nếu đã đạt giới hạn số lượng rồng thì dừng lại
+            if (currentDragonCount >= dragonCount) {
+                break;
+            }
+
             // Kiểm tra nếu vị trí này đã spawn rồi thì bỏ qua
             if (spawnedDragonPoints.Contains(spawnPoint)) {
                 continue;
@@ -144,10 +143,8 @@ public class PlayerController : MonoBehaviour {
             spawnedDragonPoints.Add(spawnPoint);
             currentDragonCount++;
 
-            // Kiểm tra nếu đã đạt giới hạn số lượng rồng thì dừng lại
-            if (currentDragonCount >= dragonCount) {
-                break;
-            }
+            
+            
         }
 
     }
@@ -180,7 +177,13 @@ public class PlayerController : MonoBehaviour {
     }
     public void SetPlayerHealth (int monsterHealth) {
        
-        health = health - monsterHealth;
+
+        int reduceHealth = impactBelt.reduceDamage(monsterHealth, levelBelt);
+
+        health = health - reduceHealth;
+        
+        Debug.Log("Reduce Impact: " + reduceHealth);
+
         Debug.Log("Player health: " + health);
     }
 
@@ -188,5 +191,35 @@ public class PlayerController : MonoBehaviour {
 
     public void SetCurrentSwordCount() { 
         currentSwordCount--;
+    }
+
+    public bool HasImpactBelt() {
+        if (levelBelt > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public void InitItem() {
+        arrowController = arrow.gameObject.GetComponent<ArrowController>();
+        swordController = sword.gameObject.GetComponent<SwordController>();
+        dragonController = dragon.gameObject.GetComponent<DragonController>();
+        wolfController = wolf.gameObject.GetComponent<WolfController>();
+
+        arrowController.InitializeArrowProperties(); // Lấy thông tin từ prefab ScriptableObj
+        swordController.InitializeSwordProperties();
+        wolfController.InitializeWolfProperties();
+
+
+        currentDragonCount = 0;
+        currentSwordCount = 0;
+        currentWolfCount = 0;
+        dragonCount = dragonController.GetDragonCount();
+        swordCount = swordController.swordCount;
+        wolfCount = wolfController.GetWolfCount();
+
+       
+
     }
 }
