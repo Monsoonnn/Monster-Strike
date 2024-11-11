@@ -13,16 +13,23 @@ public class UI_UpgradeItem : MonoBehaviour {
     [SerializeField] private GameObject tableChoice;
     private void Start() {
         Hide();
-
+        selectedUpgrades.Clear();
     }
 
 
     public void ShowItem() {
+
+        ClearChoice();
+
         GenerateRandomUpgrades();
 
         ItemUpgradeVisualUI visual = itemChoice.gameObject.GetComponent<ItemUpgradeVisualUI>();
 
+        int count = 0;
+
         foreach (ItemUpgrade upgrade in selectedUpgrades) {
+
+            if(count >= 3 ) { break; }
 
             ItemUpgradeVisualUI itemChoice = Instantiate(visual,tableChoice.transform.position, tableChoice.transform.rotation, tableChoice.transform);
 
@@ -30,6 +37,8 @@ public class UI_UpgradeItem : MonoBehaviour {
             
             
             itemChoice.VisualUpdate(upgrade, upgrade.bonus);
+
+            count++;
 
         }
 
@@ -74,10 +83,7 @@ public class UI_UpgradeItem : MonoBehaviour {
             tempList.RemoveAt(randomIndex);
         }
 
-        // In ra danh sách các upgradeItem đã chọn
-        foreach (var item in selectedUpgrades) {
-            Debug.Log("Selected Upgrade Item: " + item.name);
-        }
+       
     }
 
 }

@@ -7,8 +7,11 @@ public class GroundTile : MonoBehaviour {
     private PlayerController playerController;
     [SerializeField] private GameObject monsterObj;
     [SerializeField] private Transform nextSpawnPoint;
-    public float speed = 5f;
+    private float speed = 15f;
     private bool monsterSpawned = false;
+
+    private Vector3 offset = new Vector3(0, 0, 95);
+
     void Start() {
         groundController = GameObject.FindObjectOfType<GroundController>();
         playerController = GameObject.FindObjectOfType<PlayerController>();
@@ -21,7 +24,7 @@ public class GroundTile : MonoBehaviour {
 
     private void OnTriggerExit( Collider other ) {
         if (other.CompareTag("Player")) {
-            groundController.SpawnTile(groundController.GetNextSpawnPoint());
+            groundController.SpawnTile(nextSpawnPoint.transform.position + offset);
             Destroy(gameObject, 2);
         }
     }
@@ -35,7 +38,7 @@ public class GroundTile : MonoBehaviour {
 
     private void SpawnMonster() {
 
-        int monsterSpawnPointIndex = Random.Range(2, 5);
+        int monsterSpawnPointIndex = Random.Range(1, 3);
 
         Transform spawnPoint = transform.GetChild(monsterSpawnPointIndex).transform;
 
@@ -43,9 +46,6 @@ public class GroundTile : MonoBehaviour {
 
     }
 
-    public Transform GetSpawnPoint() {
-        return nextSpawnPoint;
-    }
 
     
 

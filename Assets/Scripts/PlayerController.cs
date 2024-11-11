@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour {
     private bool alive = true;
     public int health = 50;
 
-    private float speed = 5;
+    private float horizontalSpeed = 5;
+
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameObject arrow;
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour {
         dragonController = dragon.gameObject.GetComponent<DragonController>();
         wolfController = wolf.gameObject.GetComponent<WolfController>();
 
-        arrowController.InitializeArrowProperties();
+        arrowController.InitializeArrowProperties(); // Lấy thông tin từ prefab ScriptableObj
         swordController.InitializeSwordProperties();
 
 
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour {
     private void FixedUpdate() {
         if (!alive) return;
 
-        Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.deltaTime * horizontalMultipiler;
+        Vector3 horizontalMove = transform.right * horizontalInput * horizontalSpeed * Time.deltaTime * horizontalMultipiler;
 
         rb.MovePosition(rb.position + horizontalMove);
     }

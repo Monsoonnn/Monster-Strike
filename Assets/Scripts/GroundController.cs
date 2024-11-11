@@ -5,12 +5,11 @@ using UnityEngine;
 public class GroundController : MonoBehaviour
 {
     [SerializeField] private GameObject groundTile;
-    public Vector3 nextSpawnPoint;
-    public Vector3 offset = new Vector3 (0,0,28);
-    
+    public Vector3 nextSpawnPoint { set; get; }  
     void Awake()
     {
-        for (int i = 0; i < 5; i++) {
+        Vector3 startOffSet = new Vector3(0, 0, 8);
+        for (int i = 0; i < 2; i++) {
             SpawnTile(nextSpawnPoint);
         }
     }
@@ -18,11 +17,9 @@ public class GroundController : MonoBehaviour
 
     public void SpawnTile( Vector3 nextSpawnPlanePoint ) { 
         GameObject temp = Instantiate(groundTile, nextSpawnPlanePoint, Quaternion.identity);
-        nextSpawnPoint = temp.transform.GetChild(1).transform.position;
+        nextSpawnPoint = temp.transform.GetChild(0).transform.position;
     }
 
-    public Vector3 GetNextSpawnPoint() { 
-        return nextSpawnPoint - offset;
-    }
+
 
 }
