@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: 
   itemName: Wolf
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 63455d476f85ef74aa0224855337c021, type: 3}
+  level: 0
+  type: Wolf
   speed: 5
-  level: 2
   maxDistance: 0
   attackDistance: 15
   damageByLevel:
+  - 0
   - 1
   - 80
   - 300
   - 500
   frequencyByLevel: []
   countByLevel:
+  - 0
   - 1
   - 1
   - 1

@@ -4,15 +4,10 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "ScriptableObject/Item")]
-public class BaseItem : ScriptableObject
+public class BaseItem : Item
 {
-    public string itemName;
-
-    public Sprite image;
 
     public float speed;
-
-    public int level;
 
     public float maxDistance;
 

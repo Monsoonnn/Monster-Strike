@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class btnUpgradeItem : BaseBtn
 {
-    private ItemUpgrade item;
+    private Item item;
     private ItemUpgradeVisualUI itemUpgradeVisualUI;
     private ItemManager itemManager;
     private UI_UpgradeItem upgradeTableItem;
@@ -19,7 +19,7 @@ public class btnUpgradeItem : BaseBtn
 
         item = itemUpgradeVisualUI.itemTemp;
 
-        itemManager.UpdateItem(item, item.bonus);
+        itemManager.UpdateItem(item, itemUpgradeVisualUI.starLevel);
 
         upgradeTableItem.Hide();
         upgradeTableItem.ClearChoice();

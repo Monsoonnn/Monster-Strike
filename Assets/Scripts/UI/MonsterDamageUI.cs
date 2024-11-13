@@ -10,7 +10,7 @@ public class MonsterDamageUI : MonoBehaviour
 
 
 
-    public void DamageUI( int damage ) {
+    public void DamageUI( float damage ) {
         
         damageText.text = "-" + damage.ToString();
         TextMeshProUGUI dmgText = Instantiate( damageText, transform.position, Quaternion.identity, transform);

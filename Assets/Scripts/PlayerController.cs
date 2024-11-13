@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour {
 
     // Player status
     private bool alive = true;
-    public int health = 50;
+    public float health;
 
-    private float horizontalSpeed = 5;
+    public float horizontalSpeed = 5;
 
 
     [SerializeField] private Rigidbody rb;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private BaseItem_Support impactBelt;
 
-    private int levelBelt = 0;
+    public int levelBelt = 0;
 
 
     float horizontalInput;
@@ -45,14 +45,16 @@ public class PlayerController : MonoBehaviour {
     private int currentSwordCount;
     private int currentWolfCount;
 
-    private int wolfCount;
+    public int wolfCount;
     private int dragonCount;
     private int swordCount;
 
+    private float currentArrowFrequency;
+    private float currentSwordFrequency;
 
-    private HashSet<Transform> spawnedDragonPoints = new HashSet<Transform>(); // Tập lưu các vị trí đã spawn rồng
-    private HashSet<Transform> spawnedWolfPoints = new HashSet<Transform>(); // Tập lưu các vị trí đã spawn sói
+    private HashSet<Transform> spawnedDragonPoints = new HashSet<Transform>(); 
 
+    private List<GameObject> currentWolfPrefab = new List<GameObject>();
     private void Start() {
 
         InitItem(); 
@@ -62,11 +64,11 @@ public class PlayerController : MonoBehaviour {
         // Support Item
         levelBelt = impactBelt.level;
 
-        float arrowFrequency = 100f / arrowController.GetArrowFrequency();
-        float swordFrequency = 100f / swordController.attackFrequency;
+        currentArrowFrequency = 100f / arrowController.GetArrowFrequency();
+        currentSwordFrequency = 100f / swordController.attackFrequency;
 
-        InvokeRepeating("SpawnArrow", 0f, arrowFrequency);
-        InvokeRepeating("SpawnSword", 2f, swordFrequency);
+        InvokeRepeating("SpawnArrow", 0f, currentArrowFrequency);
+        InvokeRepeating("SpawnSword", 2f, currentSwordFrequency);
         InvokeRepeating("SpawnDragon", 3f, baseFrenquency);
         InvokeRepeating("SpawnWolf", 3f, baseFrenquency);
     }
@@ -83,9 +85,28 @@ public class PlayerController : MonoBehaviour {
         if (transform.position.y < -5) {
             PlayerDie();
         }
-        
+       ItemUpdate();
+       UpdateWolf();
     }
+    public void ItemUpdate() {
+        float arrowFrequency = 100f / arrowController.GetArrowFrequency();
+        float swordFrequency = 100f / swordController.attackFrequency;
+        if (currentArrowFrequency < arrowFrequency) {
+            CancelInvoke("SpawnArrow");
+            InvokeRepeating("SpawnArrow", 0f, arrowFrequency);
+            currentArrowFrequency = arrowFrequency;
+        }
+        if (currentSwordFrequency < swordFrequency) {
+            CancelInvoke("SpawnSword");
+            InvokeRepeating("SpawnSword", 0f, swordFrequency);
+            currentSwordFrequency = swordFrequency;
+        }
+       
 
+        dragonCount = dragonController.GetDragonCount();
+        swordCount = swordController.swordCount;
+        wolfCount = wolfController.GetWolfCount();
+    }
     public void PlayerDie() {
         alive = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -108,16 +129,15 @@ public class PlayerController : MonoBehaviour {
             }
             Vector3 offset = new Vector3(Random.Range(0.5f, 1f), Random.Range(0.2f, 0.8f), 0f);
 
-            // Spawn kiem
+            
             GameObject swordObj = Instantiate(sword, spawnPoint.position + offset, Quaternion.identity);
 
-            // Gán spawnPoint vào script Wolf của đối tượng wolfInstance
+            
             SwordController swordScript = swordObj.GetComponent<SwordController>();
             if (swordScript != null) {
                 swordScript.SetSpawnPoint(spawnPoint);
             }
 
-            // Tăng số lượng sói đã spawn
             currentSwordCount++;
         }
 
@@ -143,8 +163,6 @@ public class PlayerController : MonoBehaviour {
             spawnedDragonPoints.Add(spawnPoint);
             currentDragonCount++;
 
-            
-            
         }
 
     }
@@ -159,6 +177,8 @@ public class PlayerController : MonoBehaviour {
             // Spawn sói tại vị trí spawnPoint với offset
             GameObject wolfInstance = Instantiate(wolf, spawnPoint.position + offset, Quaternion.identity);
 
+            currentWolfPrefab.Add(wolfInstance);
+
             // Gán spawnPoint vào script Wolf của đối tượng wolfInstance
             WolfController wolfScript = wolfInstance.GetComponent<WolfController>();
             if (wolfScript != null) {
@@ -172,10 +192,10 @@ public class PlayerController : MonoBehaviour {
 
 
 
-    public int GetPlayerHealth() {
+    public float GetPlayerHealth() {
         return health;
     }
-    public void SetPlayerHealth (int monsterHealth) {
+    public void SetPlayerHealth (float monsterHealth) {
        
 
         int reduceHealth = impactBelt.reduceDamage(monsterHealth, levelBelt);
@@ -190,6 +210,10 @@ public class PlayerController : MonoBehaviour {
 
 
     public void SetCurrentSwordCount() { 
+        currentSwordCount--;
+    }
+
+    public void SetCurrentWolfCount() {
         currentSwordCount--;
     }
 
@@ -221,5 +245,26 @@ public class PlayerController : MonoBehaviour {
 
        
 
+    }
+
+
+    public void UpdateWolf() {
+
+        if (wolfController.maxCount >= 4) {
+            currentWolfCount = 0;
+            wolfController.maxCount = 1;
+            wolfController.level++;
+            DestroyAllWolves();
+        }
+
+    }
+
+    public void DestroyAllWolves() {
+
+        for (int i = currentWolfPrefab.Count - 1; i >= 0; i--) {
+            Destroy(currentWolfPrefab[i]);
+            currentWolfPrefab.RemoveAt(i);
+            SetCurrentWolfCount();
+        }
     }
 }

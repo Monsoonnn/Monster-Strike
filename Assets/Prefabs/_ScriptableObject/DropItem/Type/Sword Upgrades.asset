@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f46ba58253cdab49bbb3829678e45e7, type: 3}
+  m_Name: Sword Upgrades
+  m_EditorClassIdentifier: 
+  itemName: Sword Upgrade
+  dropRate: 42.5
+  dropItemRate:
+  - {fileID: 11400000, guid: 33b71dde93c08c946b480a56295c5fed, type: 2}
+  - {fileID: 11400000, guid: 755ec761e5cdfeb4fbe789fcd3456e94, type: 2}
+  - {fileID: 11400000, guid: e4e28cb5d6f750d47948e58362288368, type: 2}
+  - {fileID: 11400000, guid: cdebc270e07bc0e4f8c8efd3d43e50d1, type: 2}
+  - {fileID: 11400000, guid: 846d9ec01c9d247449ff5c4c8be7d1b3, type: 2}

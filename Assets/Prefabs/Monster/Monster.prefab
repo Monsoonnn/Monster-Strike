@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25d60f753b01ec488a154a9fdfecdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
+  detectionRadius: 10
   reduceDamageUI: {fileID: 8641725405613376968}
 --- !u!1 &6635657890783963082
 GameObject:

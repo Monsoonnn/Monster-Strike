@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wolf: {fileID: 11400000, guid: b4ff671ea35d4d147bd93c5d7e84a7cb, type: 2}
-  damage: 1
+  damage: 0
   speed: 5
   attackDistance: 15
-  maxCount: 1
-  level: 0
-  hasCollided: 0
+  maxCount: 3
+  level: 2
+  isLevelUp: 0
 --- !u!1 &5672641774804489676
 GameObject:
   m_ObjectHideFlags: 0

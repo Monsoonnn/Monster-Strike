@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class UI_UpgradeItem : MonoBehaviour {
 
-    [SerializeField] private List<ItemUpgrade> upgradeItemList;
+    [SerializeField] private List<Item> upgradeItemList;
 
     [SerializeField] private GameObject itemChoice;
 
-    private List<ItemUpgrade> selectedUpgrades = new List<ItemUpgrade>();
+    private List<Item> selectedUpgrades = new List<Item>();
 
     [SerializeField] private GameObject tableChoice;
+
+    ItemManager itemManager;
     private void Start() {
         Hide();
-        selectedUpgrades.Clear();
+        selectedUpgrades.Clear(); 
+        itemManager = GameObject.FindAnyObjectByType<ItemManager>();
     }
 
 
@@ -27,16 +30,13 @@ public class UI_UpgradeItem : MonoBehaviour {
 
         int count = 0;
 
-        foreach (ItemUpgrade upgrade in selectedUpgrades) {
+        foreach (Item upgrade in selectedUpgrades) {
 
             if(count >= 3 ) { break; }
 
-            ItemUpgradeVisualUI itemChoice = Instantiate(visual,tableChoice.transform.position, tableChoice.transform.rotation, tableChoice.transform);
-
-            upgrade.bonus = Random.Range(upgrade.minStat, upgrade.maxStat);
+            ItemUpgradeVisualUI itemChoice = Instantiate(visual,tableChoice.transform.position, tableChoice.transform.rotation, tableChoice.transform); 
             
-            
-            itemChoice.VisualUpdate(upgrade, upgrade.bonus);
+            itemChoice.VisualUpdate(upgrade);
 
             count++;
 
@@ -75,15 +75,27 @@ public class UI_UpgradeItem : MonoBehaviour {
     private void GenerateRandomUpgrades() {
 
         // Tạo bản sao của upgradeItemList để có thể thao tác mà không làm thay đổi danh sách gốc
-        List<ItemUpgrade> tempList = new List<ItemUpgrade>(upgradeItemList);
+        List<Item> tempList = new List<Item>(upgradeItemList);
 
-        for (int i = 0; i < 3; i++) {
+        while (selectedUpgrades.Count < 3 && tempList.Count > 0)
+        {
             int randomIndex = Random.Range(0, tempList.Count);
+
+
+            GameObject targetItem = itemManager.FindGameObject(tempList[randomIndex]);
+
+            Component controller = itemManager.GetController(targetItem);
+
+            if (itemManager.isMaxLevel(controller, tempList[randomIndex])) { // Nếu đã đạt max level thì skip 
+                tempList.RemoveAt(randomIndex);
+                continue;
+            }
+            
             selectedUpgrades.Add(tempList[randomIndex]);
             tempList.RemoveAt(randomIndex);
+
         }
 
-       
     }
 
 }

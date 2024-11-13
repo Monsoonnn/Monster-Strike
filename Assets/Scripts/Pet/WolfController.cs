@@ -18,10 +18,12 @@ public class WolfController : MonoBehaviour {
 
 
     private Transform targetMonster = null;
+
     private bool isFindAMonster = false;
     public bool isNearMonster { get; private set; }
     public bool isFinishedAttack { get; set; }
-    public bool hasCollided = false;
+
+    public bool isLevelUp = false;
 
     private Transform spawnPoint; // vi tri spawn
 
@@ -33,6 +35,7 @@ public class WolfController : MonoBehaviour {
 
     void Update() {
 
+        CheckWolfStats();
         CheckDistanceAndReturn();
 
         if (!isFindAMonster) {
@@ -47,6 +50,7 @@ public class WolfController : MonoBehaviour {
             /* Debug.Log("Monster has been killed");*/
             BackToPlayer();
         }
+
 
     }
     private void CheckDistanceAndReturn() {
@@ -125,7 +129,6 @@ public class WolfController : MonoBehaviour {
         targetMonster = null;
         isNearMonster = false;
         isFinishedAttack = false;
-        hasCollided = false;
     }
 
 
@@ -148,14 +151,24 @@ public class WolfController : MonoBehaviour {
 
     public void InitializeWolfProperties() {
         speed = wolf.speed;
-        level = wolf.level;
-        attackDistance = wolf.attackDistance;
-
-      
-            damage = (int)wolf.damageByLevel[level];
-            maxCount = (int)wolf.countByLevel[level];
        
+        attackDistance = wolf.attackDistance;
+        if (isLevelUp) {
+            isLevelUp = false;
+        } else {
+            level = wolf.level;
+        }
 
-        
+        damage = (int)wolf.damageByLevel[level];
+        maxCount = (int)wolf.countByLevel[level];
+
     }
+
+    public void CheckWolfStats() {
+
+        damage = (int)wolf.damageByLevel[level];
+ 
+    }
+
+   
 }

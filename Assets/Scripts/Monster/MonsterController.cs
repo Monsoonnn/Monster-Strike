@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterController : MonoBehaviour {
-    // Monster status
-
-
-
 
     public int monsterHealth;
 
@@ -25,7 +21,7 @@ public class MonsterController : MonoBehaviour {
 
     private void OnCollisionEnter( Collision collision ) {
         if (collision.gameObject.CompareTag("Player")) {
-            Debug.Log("Damage duoc nhan tu: " + collision.gameObject.name);
+           /* Debug.Log("Damage duoc nhan tu: " + collision.gameObject.name);*/
 
             DamageToPlayer();
 
@@ -37,16 +33,15 @@ public class MonsterController : MonoBehaviour {
 
             WolfController wolf = collision.gameObject.GetComponent<WolfController>();
 
-            if (wolf != null && !wolf.hasCollided) // Kiểm tra nếu chưa va chạm
+            if (wolf != null) // Kiểm tra nếu chưa va chạm
     {
                 if (wolf.isFinishedAttack) {
-                    Debug.Log("Damage được nhận từ: " + collision.gameObject.name);
+                   /* Debug.Log("Damage được nhận từ: " + collision.gameObject.name);*/
                     int wolfDamage = wolf.GetDamage();
 
                     DamageCalculation(wolfDamage);
                     wolf.isFinishedAttack = false;
-                    wolf.hasCollided = true; // Đánh dấu là đã va chạm
-                    wolf.BackToPlayer();
+                   
                 }
             }
 
@@ -56,12 +51,12 @@ public class MonsterController : MonoBehaviour {
 
         if (other.gameObject.CompareTag("Sword")) {
 
-            Debug.Log(other.gameObject.name);
+           /* Debug.Log(other.gameObject.name);*/
 
             SwordController sword = other.gameObject.GetComponent<SwordController>();
 
             if (sword != null) {
-                int damage = sword.damage;
+                float damage = sword.damage;
                 
                 DamageCalculation(damage);
                 sword.AttackTarget();
@@ -70,7 +65,7 @@ public class MonsterController : MonoBehaviour {
 
         } else if (other.gameObject.CompareTag("Fireball")) {
 
-            Debug.Log("Damage duoc nhan tu: " + other.gameObject.name);
+            /*Debug.Log("Damage duoc nhan tu: " + other.gameObject.name);*/
 
 
             FireballController fireball = other.gameObject.GetComponent<FireballController>();
@@ -87,7 +82,7 @@ public class MonsterController : MonoBehaviour {
 
         } else if (other.gameObject.CompareTag("Arrow")) {
 
-            Debug.Log("Damage duoc nhan tu: " + other.gameObject.name);
+            /*Debug.Log("Damage duoc nhan tu: " + other.gameObject.name);*/
 
             ArrowController arrow = other.gameObject.GetComponent<ArrowController>();
 
@@ -102,9 +97,9 @@ public class MonsterController : MonoBehaviour {
 
     } 
 
-    public void DamageCalculation( int dmg ) {
+    public void DamageCalculation( float dmg ) {
 
-        monsterHealth -= dmg;
+        monsterHealth -= (int) dmg;
 
         monsterDamageUI.DamageUI(dmg);
 
@@ -129,7 +124,7 @@ public class MonsterController : MonoBehaviour {
             return;
         }  // Nhan vat con song ko ?
 
-        int playerHealth = playerController.GetPlayerHealth();
+        float playerHealth = playerController.GetPlayerHealth();
 
 
         if (playerHealth <= monsterHealth) {

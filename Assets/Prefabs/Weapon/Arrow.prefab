@@ -123,6 +123,7 @@ MonoBehaviour:
   arrow: {fileID: 11400000, guid: 73846266b95f40e44bff7b9f47cc96bf, type: 2}
   critGlasses: {fileID: 11400000, guid: f1b1038feee48a446ac51e13e7c2e4d1, type: 2}
   SpeedyCape: {fileID: 11400000, guid: 363429032003a0547a877bb777146a6c, type: 2}
+  LifeSteal: {fileID: 11400000, guid: 16ac53f16fe95c54b84733bb8d0fc1db, type: 2}
   speed: 6
   Damage: 9
   maxDistance: 30

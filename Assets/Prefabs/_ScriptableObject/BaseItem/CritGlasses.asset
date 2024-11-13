@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CritGlasses
   m_EditorClassIdentifier: 
   itemName: Crit Value
+  image: {fileID: 21300000, guid: b7b67ba7c67fb524fb811a1da0471e21, type: 3}
   level: 0
+  type: Arrow
   critRate: 000000000a0000000c0000000f00000014000000
   critDamage: 0000000064000000c8000000fa0000002c010000

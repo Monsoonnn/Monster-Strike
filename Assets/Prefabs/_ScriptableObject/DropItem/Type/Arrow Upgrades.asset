@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f46ba58253cdab49bbb3829678e45e7, type: 3}
+  m_Name: Arrow Upgrades
+  m_EditorClassIdentifier: 
+  itemName: Arrow Upgrade
+  dropRate: 42.5
+  dropItemRate:
+  - {fileID: 11400000, guid: cc6696498c4b021439fffa636db57897, type: 2}
+  - {fileID: 11400000, guid: 92c44c28512d3a44abdd0853a78fc05f, type: 2}
+  - {fileID: 11400000, guid: b8da941f0d584c349aba38a385b29673, type: 2}
+  - {fileID: 11400000, guid: d22f3938e3a88ec4f9e220a1da18b9ab, type: 2}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ReduceDamageUI : MonoBehaviour {
-    public float detectionRadius = 20f; // Bán kính phát hiện (5m)
+    public float detectionRadius;
     
     public GameObject reduceDamageUI; 
 

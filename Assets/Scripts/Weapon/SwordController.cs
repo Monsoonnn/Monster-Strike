@@ -14,7 +14,7 @@ public class SwordController : MonoBehaviour {
     public float moveSpeed;      // Tốc độ di chuyển của kiếm
     public float attackFrequency; // Thời gian respawn của kiếm 
     public int swordCount;       // Số lượng kiếm có thể spawn
-    public int damage;             // Sát thương của kiếm
+    public float damage;             // Sát thương của kiếm
     public int level;
     private bool isAttacking = false;   // Biến kiểm soát trạng thái tấn công
 
@@ -105,7 +105,7 @@ public class SwordController : MonoBehaviour {
         moveSpeed = prefab.speed;
         level = prefab.level;
 
-        damage = (int)prefab.damageByLevel[level];
+        damage = prefab.damageByLevel[level];
         attackFrequency = prefab.frequencyByLevel[level];
         swordCount = (int)prefab.countByLevel[level];
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SpeedyCape
   m_EditorClassIdentifier: 
   itemName: Speedy Cape
-  image: {fileID: 0}
-  level: 4
+  image: {fileID: 21300000, guid: d914a1205a2a9c646bf19e024fd12944, type: 3}
+  level: 0
+  type: Arrow
   itemStatByLevel: 000000000a0000001b0000003200000050000000

@@ -4,13 +4,8 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "ScriptableObject/CritGlasses")]
-public class BaseItem_critValue : ScriptableObject
+public class BaseItem_critValue : Item
 {
-    public string itemName;
-
-    public Sprite image;
-
-    public int level;
 
 
     public List<int> critRate;

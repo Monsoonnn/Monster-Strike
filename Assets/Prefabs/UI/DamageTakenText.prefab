@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9053685356700500479}
   - component: {fileID: 3594003807569864612}
   - component: {fileID: 6674910368832974595}
-  - component: {fileID: 5868299460400913174}
+  - component: {fileID: 6428574480552792194}
   m_Layer: 5
   m_Name: DamageTakenText
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5868299460400913174
+--- !u!114 &6428574480552792194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

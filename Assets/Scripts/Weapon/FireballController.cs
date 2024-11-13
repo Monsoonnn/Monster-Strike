@@ -98,6 +98,6 @@ public class FireballController : MonoBehaviour
         damage = (int)fireball.damageByLevel[level];
         count = (int)fireball.countByLevel[level];
 
-
     }
+
 }

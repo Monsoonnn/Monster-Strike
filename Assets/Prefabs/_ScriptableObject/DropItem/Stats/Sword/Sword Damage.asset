@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67580494cba645c4da5ddbc5f0a941c3, type: 3}
+  m_Name: Sword Damage
+  m_EditorClassIdentifier: 
+  itemName: Sword Damage
+  image: {fileID: 21300000, guid: dbb25836c30190445bcf081843d8fdc2, type: 3}
+  dropRate: 20
+  type: Sword
+  listItemLevel:
+  - {fileID: 11400000, guid: d543855a3b9f60d4dbe93d6bf0ccb655, type: 2}
+  - {fileID: 11400000, guid: d470db9d501f36f468218cbc868662ae, type: 2}
+  - {fileID: 11400000, guid: bead6254019e012478883ca78a53c3df, type: 2}
+  - {fileID: 11400000, guid: 61de6573e0fe4cb40838cd4f0be4f27f, type: 2}

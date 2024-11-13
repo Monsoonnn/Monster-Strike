@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67580494cba645c4da5ddbc5f0a941c3, type: 3}
+  m_Name: Sword Distance
+  m_EditorClassIdentifier: 
+  itemName: Sword Distance
+  image: {fileID: 21300000, guid: e7b5a6b540d02644cb03e33f79a63abc, type: 3}
+  dropRate: 20
+  type: Sword
+  listItemLevel:
+  - {fileID: 11400000, guid: 430add06e91bc4d45a7e034a89807bdb, type: 2}
+  - {fileID: 11400000, guid: da6e6b9e7b492134d9b4dfa1bb31cb00, type: 2}
+  - {fileID: 11400000, guid: 3b8ff950ee1347845a4da1362e687fd6, type: 2}
+  - {fileID: 11400000, guid: 1e847bd80f7b67f4a8f8bf483c88e956, type: 2}
