@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Fireball
   image: {fileID: 0}
-  level: 1
+  level: 2
   type: Dragon
   speed: 5
   maxDistance: 20
