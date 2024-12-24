@@ -10,6 +10,7 @@ public class MonsterController : MonoBehaviour {
     PlayerController playerController;
 
     [SerializeField] private MonsterReward_Script monsterReward;
+    [SerializeField] private RewardChest_DropItem monsterRewardDrop;
     [SerializeField] private MonsterDamageUI monsterDamageUI;
     
 
@@ -21,7 +22,7 @@ public class MonsterController : MonoBehaviour {
 
     private void OnCollisionEnter( Collision collision ) {
         if (collision.gameObject.CompareTag("Player")) {
-           /* Debug.Log("Damage duoc nhan tu: " + collision.gameObject.name);*/
+            Debug.Log("Damage duoc nhan tu: " + collision.gameObject.name);
 
             DamageToPlayer();
 
@@ -36,7 +37,7 @@ public class MonsterController : MonoBehaviour {
             if (wolf != null) // Kiểm tra nếu chưa va chạm
     {
                 if (wolf.isFinishedAttack) {
-                   /* Debug.Log("Damage được nhận từ: " + collision.gameObject.name);*/
+                    Debug.Log("Damage được nhận từ: " + collision.gameObject.name);
                     int wolfDamage = wolf.GetDamage();
 
                     DamageCalculation(wolfDamage);
@@ -51,7 +52,7 @@ public class MonsterController : MonoBehaviour {
 
         if (other.gameObject.CompareTag("Sword")) {
 
-           /* Debug.Log(other.gameObject.name);*/
+            Debug.Log(other.gameObject.name);
 
             SwordController sword = other.gameObject.GetComponent<SwordController>();
 
@@ -65,8 +66,7 @@ public class MonsterController : MonoBehaviour {
 
         } else if (other.gameObject.CompareTag("Fireball")) {
 
-            /*Debug.Log("Damage duoc nhan tu: " + other.gameObject.name);*/
-
+            Debug.Log("Damage duoc nhan tu: " + other.gameObject.name);
 
             FireballController fireball = other.gameObject.GetComponent<FireballController>();
 
@@ -110,12 +110,28 @@ public class MonsterController : MonoBehaviour {
             MonsterDie();
         }
     }
-    void  MonsterDie() {
+    void MonsterDie() {
         Debug.Log("Monster died!");
 
-        monsterReward.SpawnRewardChest();
+        bool isSpawnChest = false;
+
+        if (monsterReward != null && !isSpawnChest) {
+            
+            monsterReward.SpawnRewardChest();
+            isSpawnChest = true;
+
+        }
+        
+
+        if (monsterRewardDrop != null & !isSpawnChest) {
+
+            monsterRewardDrop.SpawnRewardChest();
+            isSpawnChest = true;
+
+        }
 
         Destroy(gameObject);
+
     }
 
     void DamageToPlayer() {

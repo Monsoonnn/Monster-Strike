@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class btnStartGame : BaseBtn
 {
+   
     protected override void OnClick() {
         SceneManager.LoadScene(1);
+        
+        // Hàm restart 
     }
 }

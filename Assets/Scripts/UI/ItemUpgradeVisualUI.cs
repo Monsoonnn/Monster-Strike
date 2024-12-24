@@ -8,6 +8,7 @@ using UnityEngine.XR;
 public class ItemUpgradeVisualUI : MonoBehaviour {
     [SerializeField] private Image item_image;
     [SerializeField] private TextMeshProUGUI item_note;
+    [SerializeField] private StarLevelUpgradeItem starUI;
 
     ItemManager itemManager;
     public int starLevel;
@@ -19,7 +20,12 @@ public class ItemUpgradeVisualUI : MonoBehaviour {
         item_image.sprite = item.image;
         itemTemp = item;
         starLevel = getLevel(item);
-
+        if (item.itemName == "Health") {
+            starUI.InitStarItem(1);
+        } else {
+            starUI.InitStarItem(starLevel);
+        }
+       
     }
 
     public int getLevel( Item item ) {
@@ -70,6 +76,7 @@ public class ItemUpgradeVisualUI : MonoBehaviour {
                 item_note.text = "Health bonus: " + bonus;
 
                 return bonus;
+
             } else if (item.itemName == "Impact Belt") {
 
                 starLevel = player.levelBelt + 1;
@@ -83,7 +90,10 @@ public class ItemUpgradeVisualUI : MonoBehaviour {
 
         }
         item_note.text = "X2 Monster";
-        return 0;
+        return 1;
 
     }
+
+
+
 }

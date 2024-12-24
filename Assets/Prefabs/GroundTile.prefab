@@ -183,7 +183,7 @@ MonoBehaviour:
   - {fileID: 1589738876170656757}
   - {fileID: 4665104944301519826}
   bossSpawnPoint: {fileID: 8144889902505890665}
-  speed: 5
+  speed: 10
   bossSpawned: 0
 --- !u!1 &545318064900634695
 GameObject:

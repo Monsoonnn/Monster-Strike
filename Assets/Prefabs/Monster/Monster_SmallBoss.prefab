@@ -403,8 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3825e064427a348aa5ec7dfd248ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterHealth: 500
+  monsterHealth: 200
   monsterReward: {fileID: 6288111049402993114}
+  monsterRewardDrop: {fileID: 0}
   monsterDamageUI: {fileID: 3827164677771179491}
 --- !u!114 &4462013280634193490
 MonoBehaviour:

@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEngine;
 
-public class RewardPortal : MonoBehaviour
-{
+public class RewardPortal : MonoBehaviour {
     private bool isTrigger = false;
     [SerializeField] private TextMeshProUGUI itemNote;
     private DropItemManager dropItemManager;
@@ -18,48 +14,35 @@ public class RewardPortal : MonoBehaviour
     }
 
     public void UpdateVisualItem() {
-
         string statText;
-        // Cập nhật horizontal
-        if (itemStats.itemName == "Sword Cooldown") {
+
+        if (itemStats != null && itemStats.itemName == "Sword Cooldown") {
             statText = "-" + itemLevel.bonusStat + "%";
-        } else {
+        } else if (itemStats != null) {
             statText = "+" + itemLevel.bonusStat;
+        } else {
+            statText = "";
         }
 
-        itemNote.text = itemStats.itemName + "\n" + statText;
+        itemNote.text = (itemStats != null ? itemStats.itemName : "Unknown Item") + "\n" + statText;
     }
-
-
-
 
     public void GetDropItemStats( DropItemType type ) {
-
-
         itemStats = type.GetRandomDropItemStats();
-
-       /* Debug.Log(itemStats.ToString());*/
-
         itemLevel = itemStats.GetRandomDropItemLevel();
-
     }
-
 
     private void OnTriggerEnter( Collider other ) {
         if (other.gameObject.CompareTag("Player") && !isTrigger) {
             Debug.Log("Đã nhặt dropitem");
             isTrigger = true;
+
+            // Gọi hiệu ứng Buff từ Singleton
+            EffectPlayerController.Instance?.Buff();
+
+            // Cập nhật item và phá hủy đối tượng
             dropItemManager.UpdateItem(itemStats, itemLevel.bonusStat);
-
+            Destroy(gameObject, 0.15f);
         }
     }
-
-    private void OnTriggerExit( Collider other ) {
-        if (other.gameObject.CompareTag("Player")) {
-
-            Destroy(gameObject, 2);
-
-        }
-    }
-
 }

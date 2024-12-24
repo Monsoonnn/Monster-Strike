@@ -12,11 +12,15 @@ public class UI_UpgradeItem : MonoBehaviour {
 
     [SerializeField] private GameObject tableChoice;
 
+    private UIManager manager;
+
     ItemManager itemManager;
     private void Start() {
         Hide();
         selectedUpgrades.Clear(); 
         itemManager = GameObject.FindAnyObjectByType<ItemManager>();
+
+        manager = GameObject.FindObjectOfType<UIManager>();
     }
 
 
@@ -53,14 +57,6 @@ public class UI_UpgradeItem : MonoBehaviour {
         foreach (Transform child in tableChoice.transform) {
             Destroy(child.gameObject); 
         }
-    }
-
-    public void GameContinue() {
-        Time.timeScale = 1.0f;  
-    }
-
-    public void GamePause() {
-        Time.timeScale = 0f;
     }
 
     public void Show() {

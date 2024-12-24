@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     private bool alive = true;
     public float health;
 
-    public float horizontalSpeed = 5;
+    public float horizontalSpeed;
 
 
     [SerializeField] private Rigidbody rb;
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private BaseItem_Support impactBelt;
 
+
+
     public int levelBelt = 0;
 
 
@@ -40,6 +42,9 @@ public class PlayerController : MonoBehaviour {
     SwordController swordController;
     DragonController dragonController;
     WolfController wolfController;
+
+    private UIManager uiManager;
+    [SerializeField] private GameOverUI gameOverUI;
 
     private int currentDragonCount;
     private int currentSwordCount;
@@ -56,7 +61,8 @@ public class PlayerController : MonoBehaviour {
 
     private List<GameObject> currentWolfPrefab = new List<GameObject>();
     private void Start() {
-
+        uiManager = GameObject.FindAnyObjectByType<UIManager>();
+       
         InitItem(); 
         // Weapon item
 
@@ -78,6 +84,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 horizontalMove = transform.right * horizontalInput * horizontalSpeed * Time.deltaTime * horizontalMultipiler;
 
         rb.MovePosition(rb.position + horizontalMove);
+      
     }
     private void Update() {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -85,6 +92,7 @@ public class PlayerController : MonoBehaviour {
         if (transform.position.y < -5) {
             PlayerDie();
         }
+
        ItemUpdate();
        UpdateWolf();
     }
@@ -109,7 +117,12 @@ public class PlayerController : MonoBehaviour {
     }
     public void PlayerDie() {
         alive = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (!uiManager.isGamePause) {
+            gameOverUI.Toggle();
+            uiManager.GamePause();
+            uiManager.isGameOver = true;
+           
+        }
     }
 
 

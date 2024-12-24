@@ -8,12 +8,14 @@ public class RewardChest_Script : MonoBehaviour
 
     private GameObject UIManagaer;
     private GameObject UIupgradeItem;
+    private UIManager manager;
 
     private void Start() {
         UIManagaer = GameObject.FindGameObjectWithTag("UIManager");
 
         UIupgradeItem = UIManagaer.transform.GetChild(0).gameObject;
 
+        manager = GameObject.FindObjectOfType<UIManager>();
 
     }
 
@@ -25,7 +27,10 @@ public class RewardChest_Script : MonoBehaviour
 
             upgradeTable.Show();
             upgradeTable.ShowItem();
-            upgradeTable.GamePause();
+            if (!manager.isGamePause) { 
+                manager.GamePause();
+                manager.isPickingItem = true;
+            }
 
         }
     }
