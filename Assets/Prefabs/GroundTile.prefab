@@ -183,8 +183,8 @@ MonoBehaviour:
   - {fileID: 1589738876170656757}
   - {fileID: 4665104944301519826}
   bossSpawnPoint: {fileID: 8144889902505890665}
-  speed: 10
   bossSpawned: 0
+  monsterHealthScale: 0
 --- !u!1 &545318064900634695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,6 +2334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508719597589722827, guid: e6ffde12220b10c479c456d86788d00e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.82
       objectReference: {fileID: 0}
     - target: {fileID: 8717771299580363227, guid: e6ffde12220b10c479c456d86788d00e,
         type: 3}

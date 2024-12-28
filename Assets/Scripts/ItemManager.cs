@@ -13,7 +13,7 @@ public class ItemManager : MonoBehaviour {
            
             GroundController ground = GameObject.FindAnyObjectByType<GroundController>();
 
-            ground.DoubleMonsterCurrentTitle();
+            ground.DoubleMonsterCurrentTile();
 
             return;
         }

@@ -43,6 +43,7 @@ public class WolfController : MonoBehaviour {
             FindTarget();
         }
         if (isFindAMonster && targetMonster != null) {
+           
             MoveToTarget();
         }
         if (isFindAMonster && targetMonster == null) {
@@ -66,7 +67,7 @@ public class WolfController : MonoBehaviour {
         // Lấy tất cả các đối tượng trong vùng bán kính xung quanh kiếm
         Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.forward * attackDistance * 0.5f, attackDistance * 0.5f);
 
-
+       
         foreach (Collider collider in hitColliders) {
             if (collider.CompareTag("Monster")) {
                 targetMonster = collider.transform;
@@ -86,6 +87,7 @@ public class WolfController : MonoBehaviour {
     void MoveToTarget() {
         //Di chuyển kiếm tới quái vật
         float distanceToTarget = Vector3.Distance(transform.position, targetMonster.position);
+       
 
         // Kiểm tra nếu khoảng cách hiện tại lớn hơn khoảng cách mong muốn ( đơn vị trục z)
         if (distanceToTarget > 0.1f) {
@@ -101,7 +103,12 @@ public class WolfController : MonoBehaviour {
             transform.position = newPosition;
 
             isNearMonster = true;
+
+            
+
         } else {
+
+           
             // Có thể thực hiện các hành động khác nếu cần khi kiếm ở gần quái vật
             // Debug.Log("Đã vào vị trí");
         }

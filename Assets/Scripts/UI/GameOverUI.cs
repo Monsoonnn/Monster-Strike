@@ -27,8 +27,8 @@ public class GameOverUI : MonoBehaviour {
     public void Show() {
         if (scoreManager != null) {
             // Hiển thị điểm số và số lượng coin trên màn hình Game Over
-            scoreText.text = "SCORE: " + Mathf.FloorToInt(scoreManager.score);
-            coinText.text = scoreManager.coins.ToString();
+            scoreText.text = "SCORE: " + Mathf.FloorToInt(scoreManager.score).ToString();
+            coinText.text = scoreManager.newCoins.ToString();
 
             // Lưu dữ liệu khi game kết thúc
             scoreManager.SaveGame();

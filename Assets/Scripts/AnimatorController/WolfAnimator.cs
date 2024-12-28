@@ -12,6 +12,8 @@ public class WolfAnimator : MonoBehaviour {
     private WolfController wolfController;
     [SerializeField] private GameObject hitbox;
 
+
+
     private void Awake() {
 
         animator = GetComponent<Animator>();
@@ -29,6 +31,7 @@ public class WolfAnimator : MonoBehaviour {
 
                 SwapActiveHitBox();
                 wolfController.isFinishedAttack = true;
+             
             }
             SwapActiveHitBox();
         }

@@ -59,7 +59,8 @@ public class GameChoiceUI : MonoBehaviour
                 textUI.text = arrowController.maxDistance.ToString();
             }
             else if (LayoutItem.name == "Arrow Frequency") {
-                textUI.text = arrowController.arrowFrequency.ToString();
+                float arrowFreq = arrowController.arrowFrequency - 100;
+                textUI.text = arrowFreq.ToString();
             }
             else if (LayoutItem.name == "Arrow Speed") {
                 textUI.text = arrowController.speed.ToString();
@@ -69,7 +70,7 @@ public class GameChoiceUI : MonoBehaviour
             if (LayoutItem.name == "Sword Count") {
                 textUI.text = swordController.swordCount.ToString();
             } else if (LayoutItem.name == "Sword Countdown") {
-                textUI.text = swordController.attackFrequency.ToString();
+                textUI.text = "-" + swordController.attackFrequency.ToString();
             } else if (LayoutItem.name == "Sword Damage") {
                 textUI.text = swordController.damage.ToString();
             } else if (LayoutItem.name == "Sword Distance") {

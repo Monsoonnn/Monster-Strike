@@ -22,6 +22,8 @@ public class SwordController : MonoBehaviour {
 
     private Transform spawnPoint; // vi tri spawn
 
+    private bool isPlayingSound = false;
+
     PlayerController playerController;
     void Start() {
         playerController = GameObject.FindObjectOfType<PlayerController>();
@@ -36,12 +38,14 @@ public class SwordController : MonoBehaviour {
         }
 
         if (isAttacking && targetMonster != null) {
+
             MoveToTarget(); // Di chuyển tới quái vật
 
         }
         if (isAttacking && targetMonster == null) {
             //Kiểm tra nếu quái chết trước khi kiếm đến
             Debug.Log("Monster has been killed");
+            isPlayingSound = false;
             AttackTarget();
         }
 
@@ -68,7 +72,7 @@ public class SwordController : MonoBehaviour {
 
     void MoveToTarget() {
         //Di chuyển kiếm tới quái vật
-
+        
         Vector3 direction = (targetMonster.position - transform.position).normalized;
 
         Quaternion lookRotation = Quaternion.LookRotation(direction);

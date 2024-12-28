@@ -40,6 +40,8 @@ public class RewardDropChest : MonoBehaviour
     private void OnTriggerEnter( Collider other ) {
         if (other.gameObject.CompareTag("Player") && !isTrigger) {
             Debug.Log("Đã nhặt dropitem");
+
+            SoundManager.Instance.OpenChest(transform.position);
             isTrigger = true;
             isOpen = true;
             // Cập nhật item và phá hủy đối tượng

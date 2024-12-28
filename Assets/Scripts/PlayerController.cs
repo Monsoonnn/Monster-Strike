@@ -116,6 +116,8 @@ public class PlayerController : MonoBehaviour {
         wolfCount = wolfController.GetWolfCount();
     }
     public void PlayerDie() {
+        SoundManager.Instance.GameOver(Camera.main.transform.position);
+
         alive = false;
         if (!uiManager.isGamePause) {
             gameOverUI.Toggle();
@@ -131,6 +133,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void SpawnArrow() {
+        SoundManager.Instance.ArrowSound(transform.position);
         Instantiate(arrow, arrowSpawnPoint.position, Quaternion.identity);
     }
 

@@ -29,7 +29,10 @@ public class btnUpgradeItem : BaseBtn
         upgradeTableItem.Hide();
         upgradeTableItem.ClearChoice();
 
-        if (uiManager.isGamePause) { 
+        SoundManager.Instance.OpenChest(Camera.main.transform.position);
+
+        if (uiManager.isGamePause) {
+           
             uiManager.GameContinue();
             uiManager.isPickingItem = false;
         }

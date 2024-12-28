@@ -58,7 +58,7 @@ public class MonsterController : MonoBehaviour {
 
             if (sword != null) {
                 float damage = sword.damage;
-                
+                SoundManager.Instance.SwordSound(transform.position);
                 DamageCalculation(damage);
                 sword.AttackTarget();
             }
@@ -107,10 +107,14 @@ public class MonsterController : MonoBehaviour {
 
         Debug.Log(monsterHealth);
         if (monsterHealth <= 0) {
+          
             MonsterDie();
         }
     }
     void MonsterDie() {
+
+        SoundManager.Instance.MonsterSound(transform.position);
+
         Debug.Log("Monster died!");
 
         bool isSpawnChest = false;
@@ -149,11 +153,18 @@ public class MonsterController : MonoBehaviour {
         } else { 
 
             playerController.SetPlayerHealth(monsterHealth);
+
+
             MonsterDie();
 
         }
 
         
+    }
+
+    public void SetHealth(int scale) {
+
+        monsterHealth = monsterHealth + scale;
     }
 
 

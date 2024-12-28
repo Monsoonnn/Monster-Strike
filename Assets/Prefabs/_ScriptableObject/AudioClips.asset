@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d685d2dd16808624ea6d2caf5fe92b6c, type: 3}
+  m_Name: AudioClips
+  m_EditorClassIdentifier: 
+  sword:
+  - {fileID: 8300000, guid: 027452064e858254c8d8f81d6f08bb6c, type: 3}
+  - {fileID: 8300000, guid: 96fde5bd77210ea4bb78dd14d779a733, type: 3}
+  - {fileID: 8300000, guid: 7346a73907c92b24ea3108d8b1e677b6, type: 3}
+  - {fileID: 8300000, guid: ed635432bcf6af54f9a8ea64af4fe34c, type: 3}
+  monster:
+  - {fileID: 8300000, guid: 91f815b69c803214c8a798065241e791, type: 3}
+  - {fileID: 8300000, guid: 999c833f917279f4882fc8d84c896c68, type: 3}
+  - {fileID: 8300000, guid: 8cbec7fbaa3cc954b8957bc979445b8e, type: 3}
+  - {fileID: 8300000, guid: 5fd47f9c366566b47bbe890d8e0f9581, type: 3}
+  gameover:
+  - {fileID: 8300000, guid: cd0df2fe6a642d447acd5106a45774df, type: 3}
+  openchest:
+  - {fileID: 8300000, guid: e9e784f03d41b9443998f2e118b909b6, type: 3}
+  portal:
+  - {fileID: 8300000, guid: a311ff6e8dda813479fa631da076316a, type: 3}
+  arrow:
+  - {fileID: 8300000, guid: ab44f97c4c5b7e6408c7b8e1a7a4814b, type: 3}
+  rolling:
+  - {fileID: 8300000, guid: a09c7601b311d214c8f0cbddfdd6b674, type: 3}

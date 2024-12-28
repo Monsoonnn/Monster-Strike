@@ -39,6 +39,7 @@ public class RewardPortal : MonoBehaviour {
 
             // Gọi hiệu ứng Buff từ Singleton
             EffectPlayerController.Instance?.Buff();
+            SoundManager.Instance.Portal(transform.position);
 
             // Cập nhật item và phá hủy đối tượng
             dropItemManager.UpdateItem(itemStats, itemLevel.bonusStat);
