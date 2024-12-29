@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword
   image: {fileID: 21300000, guid: 531e59d63159dad48a325cb3b2a28ae9, type: 3}
-  level: 1
+  level: 0
   type: 
   speed: 15
   maxDistance: 0
@@ -31,6 +31,6 @@ MonoBehaviour:
   - 12
   countByLevel:
   - 1
-  - 1
-  - 1
-  - 1
+  - 2
+  - 2
+  - 3

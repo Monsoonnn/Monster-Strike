@@ -8,13 +8,15 @@ public class GroundTile : MonoBehaviour {
 
     [SerializeField] private GameObject monsterObj;
     [SerializeField] private GameObject smallBossObj;
+    [SerializeField] private GameObject roundBossObj;
     [SerializeField] private Transform nextSpawnPoint;
 
     [SerializeField] private List<Transform> listSpawnPoint;
     [SerializeField] private Transform bossSpawnPoint;
 
     List<int> spawnedIndexes = new List<int>();
-    public bool bossSpawned = false;
+    public bool bossSmallSpawned = false;
+    public bool bossRoundSpawned = false;
     private bool monsterSpawned = false;
     private bool isDoubleMonster = false;
     private Vector3 offset = new Vector3(0, 0, 95);
@@ -32,7 +34,7 @@ public class GroundTile : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (bossSpawned) {
+        if (bossSmallSpawned && !bossRoundSpawned) {
             GameObject monster = Instantiate(smallBossObj, bossSpawnPoint.position, Quaternion.identity, transform);
 
             MonsterController monsterController = monster.GetComponent<MonsterController>();
@@ -41,7 +43,18 @@ public class GroundTile : MonoBehaviour {
 
             monsterController.SetHealth(monsterHealthScale * (int)scaleRandom);
 
-            bossSpawned = false;
+            bossSmallSpawned = false;
+        }
+        if (bossRoundSpawned && !bossSmallSpawned) {
+            GameObject monster = Instantiate(roundBossObj, bossSpawnPoint.position, Quaternion.identity, transform);
+
+            MonsterController monsterController = monster.GetComponent<MonsterController>();
+
+            float scaleRandom = Random.Range(10, 20);
+
+            monsterController.SetHealth(monsterHealthScale * (int)scaleRandom);
+
+            bossRoundSpawned = false;
         }
     }
 

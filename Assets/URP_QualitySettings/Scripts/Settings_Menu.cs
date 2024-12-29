@@ -65,10 +65,7 @@ public class Settings_Menu : MonoBehaviour
 		else
 			fogEffect.isOn = false;
 		//_________________________________________________
-		if (PlayerPrefs.GetInt("vSync") == 1) // 1 = true , 0 = false
-			vSync.isOn = true;
-		else
-			vSync.isOn = false;
+		
 		//_________________________________________________
 		if (PlayerPrefs.GetInt("HDR") == 1) // 1 = true , 0 = false
 			HDR.isOn = true;
@@ -212,10 +209,7 @@ public class Settings_Menu : MonoBehaviour
 		GameObject.FindObjectOfType<UnityEngine.Rendering.Volume>().sharedProfile.TryGet(out vBloom);
 		if (vBloom != null)
 		{
-			if (PlayerPrefs.GetInt("Bloom Effect") == 1)
-				vBloom.active = true;
-			else
-				vBloom.active = false;
+			
 		}
 
 	}

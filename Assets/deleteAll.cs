@@ -8,7 +8,7 @@ public class deleteAll : MonoBehaviour
     void Awake()
     {
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("Coins", 1000);
+        
         
     }
 

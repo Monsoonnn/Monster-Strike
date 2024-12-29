@@ -88,20 +88,8 @@ public class Load_Settings : MonoBehaviour
 		}
 
 		//_________________________________________________
-		UnityEngine.Rendering.Universal.Bloom vBloom;
-
-		if(globalVolume)
-			globalVolume.sharedProfile.TryGet(out vBloom);
-		else
-			GameObject.FindObjectOfType<UnityEngine.Rendering.Volume>().sharedProfile.TryGet(out vBloom);
+		;
 		
-		if (vBloom != null)
-		{
-			if (PlayerPrefs.GetInt("Bloom Effect") == 1)
-				vBloom.active = true;
-			else
-				vBloom.active = false;
-		}
 		//_________________________________________________
 		if (PlayerPrefs.GetInt("Post Effects") == 1)
 		{

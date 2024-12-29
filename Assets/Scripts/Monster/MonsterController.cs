@@ -12,7 +12,7 @@ public class MonsterController : MonoBehaviour {
     [SerializeField] private MonsterReward_Script monsterReward;
     [SerializeField] private RewardChest_DropItem monsterRewardDrop;
     [SerializeField] private MonsterDamageUI monsterDamageUI;
-    
+
 
 
     void Start() {
@@ -26,23 +26,23 @@ public class MonsterController : MonoBehaviour {
 
             DamageToPlayer();
 
-        } 
-        
+        }
+
         if (collision.gameObject.CompareTag("Wolf")) {
 
-           
+
 
             WolfController wolf = collision.gameObject.GetComponent<WolfController>();
 
             if (wolf != null) // Kiểm tra nếu chưa va chạm
-    {
+            {
                 if (wolf.isFinishedAttack) {
                     Debug.Log("Damage được nhận từ: " + collision.gameObject.name);
                     int wolfDamage = wolf.GetDamage();
 
                     DamageCalculation(wolfDamage);
                     wolf.isFinishedAttack = false;
-                   
+
                 }
             }
 
@@ -73,7 +73,7 @@ public class MonsterController : MonoBehaviour {
             if (fireball != null) {
                 int damage = fireball.GetFireBallDamage();
 
-               
+
 
                 DamageCalculation(damage);
                 fireball.AttackTarget();
@@ -89,17 +89,17 @@ public class MonsterController : MonoBehaviour {
             if (arrow != null) {
 
                 int arrowDamage = arrow.GetArrowDamage();
-                
+
                 DamageCalculation(arrowDamage);
             }
 
         }
 
-    } 
+    }
 
     public void DamageCalculation( float dmg ) {
 
-        monsterHealth -= (int) dmg;
+        monsterHealth -= (int)dmg;
 
         monsterDamageUI.DamageUI(dmg);
 
@@ -107,11 +107,44 @@ public class MonsterController : MonoBehaviour {
 
         Debug.Log(monsterHealth);
         if (monsterHealth <= 0) {
-          
+
             MonsterDie();
         }
     }
+    // void MonsterDie()
+    // {
+
+    //     SoundManager.Instance.MonsterSound(transform.position);
+
+    //     Debug.Log("Monster died!");
+
+    //     bool isSpawnChest = false;
+
+    //     if (monsterReward != null && !isSpawnChest)
+    //     {
+
+    //         monsterReward.SpawnRewardChest();
+    //         isSpawnChest = true;
+
+    //     }
+
+
+    //     if (monsterRewardDrop != null & !isSpawnChest)
+    //     {
+
+    //         monsterRewardDrop.SpawnRewardChest();
+    //         isSpawnChest = true;
+
+    //     }
+
+    //     Destroy(gameObject);
+
+    // }
+    private bool hasSpawnedChest = false;  // Cờ kiểm tra xem chest đã được spawn chưa
+
     void MonsterDie() {
+
+        if (hasSpawnedChest) return;  // Nếu đã spawn chest rồi, thì không làm gì nữa
 
         SoundManager.Instance.MonsterSound(transform.position);
 
@@ -120,26 +153,22 @@ public class MonsterController : MonoBehaviour {
         bool isSpawnChest = false;
 
         if (monsterReward != null && !isSpawnChest) {
-            
             monsterReward.SpawnRewardChest();
             isSpawnChest = true;
-
+            hasSpawnedChest = true;  // Đánh dấu đã spawn chest
         }
-        
 
-        if (monsterRewardDrop != null & !isSpawnChest) {
-
+        if (monsterRewardDrop != null && !isSpawnChest) {
             monsterRewardDrop.SpawnRewardChest();
             isSpawnChest = true;
-
+            hasSpawnedChest = true;  // Đánh dấu đã spawn chest
         }
 
         Destroy(gameObject);
-
     }
 
     void DamageToPlayer() {
-        if (!playerController.IsPlayerAlive()) { 
+        if (!playerController.IsPlayerAlive()) {
             playerController.PlayerDie();
             return;
         }  // Nhan vat con song ko ?
@@ -150,7 +179,7 @@ public class MonsterController : MonoBehaviour {
         if (playerHealth <= monsterHealth) {
             playerController.PlayerDie();
             return;
-        } else { 
+        } else {
 
             playerController.SetPlayerHealth(monsterHealth);
 
@@ -159,10 +188,10 @@ public class MonsterController : MonoBehaviour {
 
         }
 
-        
+
     }
 
-    public void SetHealth(int scale) {
+    public void SetHealth( int scale ) {
 
         monsterHealth = monsterHealth + scale;
     }

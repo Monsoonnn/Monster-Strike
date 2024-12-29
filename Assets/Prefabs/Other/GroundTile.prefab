@@ -170,6 +170,8 @@ MonoBehaviour:
     type: 3}
   smallBossObj: {fileID: 5245044892214216813, guid: c41b35e4028ee184cab0dd6e6351d4b0,
     type: 3}
+  roundBossObj: {fileID: 5245044892214216813, guid: 809d07ba87526c24cbff1cf4b90c9eef,
+    type: 3}
   nextSpawnPoint: {fileID: 8042278961831996171}
   listSpawnPoint:
   - {fileID: 5840872919404592235}

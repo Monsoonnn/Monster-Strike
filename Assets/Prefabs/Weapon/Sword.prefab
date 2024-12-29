@@ -69,11 +69,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 11400000, guid: eff33bf35659a3247883c02a361f00a4, type: 2}
-  attackDistance: 24
+  attackDistance: 10
   moveSpeed: 17
-  attackFrequency: 15
-  swordCount: 10
-  damage: 9
+  attackFrequency: 17
+  swordCount: 5
+  damage: 11
   level: 0
 --- !u!54 &7527914876006869456
 Rigidbody:

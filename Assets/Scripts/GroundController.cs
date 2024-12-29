@@ -31,16 +31,37 @@ public class GroundController : MonoBehaviour {
         nextSpawnPoint = temp.transform.GetChild(0).position;
 
         if (turn == 2) {
-            tileTemp.bossSpawned = true;
-            turn = 0;
 
-            if (speed < 15f) {
-                IncreaseSpeed(0.5f);
+            if (turn == 2 && round % 3 == 0) {
+
+                
+                tileTemp.bossRoundSpawned = true;
+                turn = 0;
+
+                if (speed < 15f) {
+                    IncreaseSpeed(0.5f);
+                }
+                if (speed > 15f && speed < 20f) {
+                    IncreaseSpeed(0.25f);
+                }
+
             }
-            if (speed > 15f && speed < 20f) {
-                IncreaseSpeed(0.25f);
+            else
+            {
+                tileTemp.bossSmallSpawned = true;
+                
+                turn = 0;
+
+                if (speed < 15f) {
+                    IncreaseSpeed(0.5f);
+                }
+                if (speed > 15f && speed < 20f) {
+                    IncreaseSpeed(0.25f);
+                }
             }
-            
+
+
+
         }
     }
 
