@@ -15,8 +15,10 @@ public class btnRestart : BaseBtn
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         if (UIManager.isGamePause) {
-            LoaderItem.Instance.LoadItem();
+            
             UIManager.GameContinue();
+
+            LoaderItem.Instance.LoadItem();
         }
     }
 }
