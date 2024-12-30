@@ -6,12 +6,13 @@ public class LoaderItem : MonoBehaviour
 {
     [SerializeField] private List<Item> Items;
 
+    public static LoaderItem Instance { get; private set; }
 
     private void Update() {
         LoadItem();
     }
 
-    void LoadItem() {
+    public void LoadItem() {
         foreach (var item in Items) {
 
             int level = PlayerPrefs.GetInt(item.itemName);

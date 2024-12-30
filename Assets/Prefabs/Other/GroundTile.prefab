@@ -185,7 +185,8 @@ MonoBehaviour:
   - {fileID: 1589738876170656757}
   - {fileID: 4665104944301519826}
   bossSpawnPoint: {fileID: 8144889902505890665}
-  bossSpawned: 0
+  bossSmallSpawned: 0
+  bossRoundSpawned: 0
   monsterHealthScale: 0
 --- !u!1 &545318064900634695
 GameObject:
@@ -335,8 +336,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.7139015, y: 9.319692, z: 55.304905}
-  m_Center: {x: 6.687477, y: 4.1598463, z: -23.175789}
+  m_Size: {x: 12.319849, y: 9.319692, z: 55.304905}
+  m_Center: {x: 5.8845034, y: 4.1598463, z: -23.175789}
 --- !u!1 &905577865838617920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,8 +1251,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.807879, y: 11.104504, z: 123.75791}
-  m_Center: {x: -1.5789914, y: 5.052252, z: -51.52547}
+  m_Size: {x: 10.4124365, y: 11.576337, z: 123.75791}
+  m_Center: {x: -1.2767128, y: 5.2881684, z: -51.52547}
 --- !u!1 &7691569198458251670
 GameObject:
   m_ObjectHideFlags: 0

@@ -1523,6 +1523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 354692210}
+  - component: {fileID: 354692211}
   m_Layer: 0
   m_Name: DeleteAll
   m_TagString: Untagged
@@ -1545,6 +1546,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &354692211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354692208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fb76ed0964ad745b6473df8c65b337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &382068448
 GameObject:
   m_ObjectHideFlags: 0
@@ -3617,7 +3630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leader Board
+  m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 696bf8d1ad1cdd7479cf66720d9ea224, type: 2}
   m_sharedMaterial: {fileID: -5209718694805457615, guid: 696bf8d1ad1cdd7479cf66720d9ea224,
